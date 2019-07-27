@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1190bc64-a983-4c98-baa5-4080da0c2f34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Pop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generateTop50.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +17,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1359">
+            <state relative-caret-position="2100">
               <caret line="109" column="65" selection-start-line="109" selection-start-column="65" selection-end-line="109" selection-end-column="65" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -28,40 +27,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="mock:///">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-652397">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="49" lean-forward="true" selection-end-line="49" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6960">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/generateTop50.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+            <state relative-caret-position="261">
+              <caret line="383" column="64" lean-forward="true" selection-start-line="383" selection-start-column="64" selection-end-line="383" selection-end-column="64" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -70,16 +39,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/top50.csv">
+        <entry file="file://$PROJECT_DIR$/src/test.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-458" />
+            <state relative-caret-position="180">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/generateTop50.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top50.csv">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_science/test.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2444">
+            <state relative-caret-position="3620">
               <caret line="181" column="61" selection-start-line="181" selection-start-column="61" selection-end-line="181" selection-end-column="61" />
             </state>
           </provider>
@@ -119,23 +107,22 @@
         <option value="$PROJECT_DIR$/data_science/test.csv" />
         <option value="$PROJECT_DIR$/src/test.csv" />
         <option value="$PROJECT_DIR$/src/test.py" />
-        <option value="$PROJECT_DIR$/src/Pop.py" />
         <option value="$PROJECT_DIR$/src/generateTop50.py" />
+        <option value="$PROJECT_DIR$/src/Pop.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-27" />
-    <option name="y" value="-9" />
+    <option name="x" value="-28" />
+    <option name="y" value="-10" />
     <option name="width" value="1935" />
-    <option name="height" value="1058" />
+    <option name="height" value="1059" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -156,6 +143,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -182,7 +170,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.generateTop50">
+  <component name="RunManager" selected="Python.Pop">
     <configuration name="Pop" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="spotify_playlist_analyzer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -251,8 +239,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.generateTop50" />
         <item itemvalue="Python.Pop" />
+        <item itemvalue="Python.generateTop50" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -270,23 +258,24 @@
       <workItem from="1563909883527" duration="669000" />
       <workItem from="1563910582915" duration="11038000" />
       <workItem from="1563928333592" duration="16116000" />
-      <workItem from="1564019267054" duration="13377000" />
+      <workItem from="1564019267054" duration="14640000" />
+      <workItem from="1564184495885" duration="5383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41200000" />
+    <option name="totallyTimeSpent" value="47846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21524966" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21891892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32846716" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23357664" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32844576" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3548387" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -312,49 +301,16 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/spotify_playlist_analyzer$generateTop50.coverage" NAME="generateTop50 Coverage Results" MODIFIED="1564122588379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/spotify_playlist_analyzer$Pop.coverage" NAME="Pop Coverage Results" MODIFIED="1564121641253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/spotify_playlist_analyzer$Pop.coverage" NAME="Pop Coverage Results" MODIFIED="1564208462817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/spotify_playlist_analyzer$test.coverage" NAME="test Coverage Results" MODIFIED="1564118535563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.env" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_science/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2444">
-          <caret line="181" column="61" selection-start-line="181" selection-start-column="61" selection-end-line="181" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generateTop50" />
     <entry file="file://$PROJECT_DIR$/src/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1359">
+        <state relative-caret-position="2100">
           <caret line="109" column="65" selection-start-line="109" selection-start-column="65" selection-end-line="109" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generateTop50">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6960">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="49" lean-forward="true" selection-end-line="49" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -363,7 +319,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/generateTop50.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="360">
           <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -372,8 +328,37 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/top50.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_science/test.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-458" />
+        <state relative-caret-position="3620">
+          <caret line="181" column="61" selection-start-line="181" selection-start-column="61" selection-end-line="181" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2100">
+          <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="383" column="64" lean-forward="true" selection-start-line="383" selection-start-column="64" selection-end-line="383" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
       </provider>
     </entry>
   </component>
