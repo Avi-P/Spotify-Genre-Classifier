@@ -7,12 +7,11 @@ import math
 
 client_id = os.environ.get('SPOTIFY_CLIENT_ID_KEY')
 client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET_KEY')
-username = "1267918568" # My Personal Spotify User Name
 redirect = os.environ.get('SPOTIFY_REDIRECT_URL')
 scope = 'user-library-read'
 
 
-def print_songs(listPlaylists, listRating, spotifyPersonal):
+def print_songs(listPlaylists, listRating, spotifyPersonal, username):
     with open('test.csv', 'w', newline='', encoding='utf-8') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',')
 
@@ -59,10 +58,32 @@ def print_songs(listPlaylists, listRating, spotifyPersonal):
 
 
 def main():
+
+    user = ""
+
+    try:
+        file = open('user.txt')
+
+        if file.mode == 'r':
+            user = file.read()
+
+        file.close()
+
+    except FileNotFoundError:
+        print("We need your username to proceed: ")
+        user = input()
+
+        file = open("user.txt", "w+")
+
+        if file.mode == 'w+':
+            file.write("" + user)
+
+        file.close()
+
     credentials = oauth2.SpotifyClientCredentials(client_id,
                                                   client_secret)
 
-    personalToken = util.prompt_for_user_token(username,
+    personalToken = util.prompt_for_user_token(user,
                                                scope,
                                                client_id,
                                                client_secret,
@@ -73,6 +94,8 @@ def main():
     spotifyOauth = spotipy.Spotify(oauthtoken)
     spotifyPersonal = spotipy.Spotify(personalToken)
 
+    username = spotifyPersonal.current_user()["id"]
+
     listPlaylists = ["spotify:playlist:6aUVcyyhGJ6LZfXNYgDbC7",  # Rap
                      "spotify:playlist:4eFNbpDSEgJ7imq5IHJUou",  # Pop
                      "spotify:playlist:5ewNXA6SGPxTunHkmAVlFU",  # Country
@@ -80,7 +103,7 @@ def main():
 
     listRating = [1, 0, -1, -2]
 
-    print_songs(listPlaylists, listRating, spotifyPersonal)
+    print_songs(listPlaylists, listRating, spotifyPersonal, username)
 
 
 if __name__ == "__main__":
