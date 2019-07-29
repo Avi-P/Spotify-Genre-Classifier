@@ -3,6 +3,7 @@ import spotipy.oauth2 as oauth2
 import spotipy.util as util
 import os
 import csv
+import math
 
 client_id = os.environ.get('SPOTIFY_CLIENT_ID_KEY')
 client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET_KEY')
@@ -11,179 +12,76 @@ redirect = os.environ.get('SPOTIFY_REDIRECT_URL')
 scope = 'user-library-read'
 
 
-credentials = oauth2.SpotifyClientCredentials(client_id,
-                                              client_secret)
-
-personalToken = util.prompt_for_user_token(username,
-                                                 scope,
-                                                 client_id,
-                                                 client_secret,
-                                                 redirect)
-
-oauthtoken = credentials.get_access_token()
-
-spotifyOauth = spotipy.Spotify(oauthtoken)
-spotifyPersonal = spotipy.Spotify(personalToken)
-
-if (spotifyPersonal):
-    playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:1lF6y6T2DtEsExx04J3i3z')
-
+def print_songs(listPlaylists, listRating, spotifyPersonal):
     with open('test.csv', 'w', newline='', encoding='utf-8') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',')
 
         spamwriter.writerow(["Song_Name", "Artist", "Danceability", "Energy", "Key", "Loudness", "Speechiness",
                              "Acousticness", "Instrumentalness", "Liveness", "Valence", "Temp", "Target"])
 
-        songsURL = []
+    for i in range(0, len(listPlaylists)):
+        size = spotifyPersonal.user_playlist(username, listPlaylists[i])["tracks"]["total"]
 
-        for i in range(len(playlists['items'])):
-            songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
+        num_offsets = math.ceil(size / 100)
 
-        audioFeatures = spotifyPersonal.audio_features(songsURL)
+        for j in range(0, num_offsets):
 
-        # print(audioFeatures)
+            playlists = spotifyPersonal.user_playlist_tracks(username,
+                                                             listPlaylists[i],
+                                                             offset=(j * 100))
 
-        for i in range(len(playlists['items'])):
-            song = playlists['items'][i]
+            with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=',')
 
-            spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'],
-                                 audioFeatures[i]["danceability"], audioFeatures[i]["energy"], audioFeatures[i]["key"],
-                                 audioFeatures[i]["loudness"], audioFeatures[i]["speechiness"],
-                                 audioFeatures[i]["acousticness"],
-                                 audioFeatures[i]["instrumentalness"], audioFeatures[i]["liveness"],
-                                 audioFeatures[i]["valence"],
-                                 audioFeatures[i]["tempo"], 0])
+                songsURL = []
 
-# -------------------------------------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------------------------------------
+                for k in range(len(playlists['items'])):
+                    songsURL.append(playlists['items'][k]['track']['external_urls']['spotify'])
 
-    playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:6jMFho3Kra6mALORsAk5t0')
+                audioFeatures = spotifyPersonal.audio_features(songsURL)
 
-    with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',')
+                for k in range(len(playlists['items'])):
+                    song = playlists['items'][k]
 
-        songsURL = []
-
-        for i in range(len(playlists['items'])):
-            songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
-
-        audioFeatures = spotifyPersonal.audio_features(songsURL)
-
-        #print(audioFeatures)
-
-
-        for i in range(len(playlists['items'])):
-            song = playlists['items'][i]
-
-            spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'], audioFeatures[i]["danceability"],audioFeatures[i]["energy"],audioFeatures[i]["key"],
-                                                 audioFeatures[i]["loudness"],audioFeatures[i]["speechiness"],audioFeatures[i]["acousticness"],
-                                                 audioFeatures[i]["instrumentalness"],audioFeatures[i]["liveness"],audioFeatures[i]["valence"],
-                                                 audioFeatures[i]["tempo"],0])
+                    spamwriter.writerow([song['track']['name'],
+                                         song['track']['album']['artists'][0]['name'],
+                                         audioFeatures[k]["danceability"],
+                                         audioFeatures[k]["energy"],
+                                         audioFeatures[k]["key"],
+                                         audioFeatures[k]["loudness"],
+                                         audioFeatures[k]["speechiness"],
+                                         audioFeatures[k]["acousticness"],
+                                         audioFeatures[k]["instrumentalness"],
+                                         audioFeatures[k]["liveness"],
+                                         audioFeatures[k]["valence"],
+                                         audioFeatures[k]["tempo"],
+                                         listRating[i]])
 
 
-        #-------------------
+def main():
+    credentials = oauth2.SpotifyClientCredentials(client_id,
+                                                  client_secret)
 
-        playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:6jMFho3Kra6mALORsAk5t0', offset=100)
+    personalToken = util.prompt_for_user_token(username,
+                                               scope,
+                                               client_id,
+                                               client_secret,
+                                               redirect)
 
-        with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
-            spamwriter = csv.writer(csvfile, delimiter=',')
+    oauthtoken = credentials.get_access_token()
 
-            songsURL = []
+    spotifyOauth = spotipy.Spotify(oauthtoken)
+    spotifyPersonal = spotipy.Spotify(personalToken)
 
-            for i in range(len(playlists['items'])):
-                songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
+    listPlaylists = ["spotify:playlist:6aUVcyyhGJ6LZfXNYgDbC7",  # Rap
+                     "spotify:playlist:4eFNbpDSEgJ7imq5IHJUou",  # Pop
+                     "spotify:playlist:5ewNXA6SGPxTunHkmAVlFU",  # Country
+                     "spotify:playlist:6eaaPlF4jIgG2YJt2f5IYC"]  # Metal
 
-            audioFeatures = spotifyPersonal.audio_features(songsURL)
+    listRating = [1, 0, -1, -2]
 
-            # print(audioFeatures)
-
-            for i in range(len(playlists['items'])):
-                song = playlists['items'][i]
-
-                spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'],
-                                     audioFeatures[i]["danceability"], audioFeatures[i]["energy"],
-                                     audioFeatures[i]["key"],
-                                     audioFeatures[i]["loudness"], audioFeatures[i]["speechiness"],
-                                     audioFeatures[i]["acousticness"],
-                                     audioFeatures[i]["instrumentalness"], audioFeatures[i]["liveness"],
-                                     audioFeatures[i]["valence"],
-                                     audioFeatures[i]["tempo"], 0])
-
-    # -------------------------------------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------------------------------------
-
-    playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:3pvmGEC1CbUF5QNfycVXjA')
-
-    with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',')
-
-        songsURL = []
-
-        for i in range(len(playlists['items'])):
-            songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
-
-        audioFeatures = spotifyPersonal.audio_features(songsURL)
-
-        #print(audioFeatures)
-
-        for i in range(len(playlists['items'])):
-            song = playlists['items'][i]
-
-            spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'], audioFeatures[i]["danceability"],audioFeatures[i]["energy"],audioFeatures[i]["key"],
-                                                 audioFeatures[i]["loudness"],audioFeatures[i]["speechiness"],audioFeatures[i]["acousticness"],
-                                                 audioFeatures[i]["instrumentalness"],audioFeatures[i]["liveness"],audioFeatures[i]["valence"],
-                                                 audioFeatures[i]["tempo"],0])
+    print_songs(listPlaylists, listRating, spotifyPersonal)
 
 
-
-
-    playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:3pvmGEC1CbUF5QNfycVXjA', offset=100)
-
-    with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',')
-
-        songsURL = []
-
-        for i in range(len(playlists['items'])):
-            songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
-
-        audioFeatures = spotifyPersonal.audio_features(songsURL)
-
-        # print(audioFeatures)
-
-        for i in range(len(playlists['items'])):
-            song = playlists['items'][i]
-
-            spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'],
-                                 audioFeatures[i]["danceability"], audioFeatures[i]["energy"], audioFeatures[i]["key"],
-                                 audioFeatures[i]["loudness"], audioFeatures[i]["speechiness"],
-                                 audioFeatures[i]["acousticness"],
-                                 audioFeatures[i]["instrumentalness"], audioFeatures[i]["liveness"],
-                                 audioFeatures[i]["valence"],
-                                 audioFeatures[i]["tempo"], 0])
-#-------------------------------------------------------------------------------------------------------------------------
-    # -------------------------------------------------------------------------------------------------------------------------
-
-    playlists = spotifyPersonal.user_playlist_tracks(username, 'spotify:playlist:6vpLNtSBeiHzB3JODqjg79')
-
-    with open('test.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',')
-
-        songsURL = []
-
-        for i in range(len(playlists['items'])):
-            songsURL.append(playlists['items'][i]['track']['external_urls']['spotify'])
-
-        audioFeatures = spotifyPersonal.audio_features(songsURL)
-
-        #print(audioFeatures)
-
-        for i in range(len(playlists['items'])):
-            song = playlists['items'][i]
-
-            spamwriter.writerow([(song)['track']['name'], (song)['track']['album']['artists'][0]['name'], audioFeatures[i]["danceability"],audioFeatures[i]["energy"],audioFeatures[i]["key"],
-                                                 audioFeatures[i]["loudness"],audioFeatures[i]["speechiness"],audioFeatures[i]["acousticness"],
-                                                 audioFeatures[i]["instrumentalness"],audioFeatures[i]["liveness"],audioFeatures[i]["valence"],
-                                                 audioFeatures[i]["tempo"], 0])
-
-print()
+if __name__ == "__main__":
+    main()
