@@ -224,6 +224,8 @@ def main():
 
     user = ""
 
+    spotify_personal = None
+
     # Used to store a username in a text file and access it
     try:
         file = open('user.txt')
@@ -238,25 +240,38 @@ def main():
         print("We need your username to proceed: ")
         user = input()
 
+        # Used to access user data
+        personal_token = util.prompt_for_user_token(user,
+                                                    scope,
+                                                    client_id,
+                                                    client_secret,
+                                                    redirect)
+
+        # API Wrapper objects to use functions to interact with Spotify API
+        spotify_personal = spotipy.Spotify(personal_token)
+
+        # Username of person logged in
+        username = spotify_personal.current_user()["id"]
+
         file = open("user.txt", "w+")
 
         if file.mode == 'w+':
-            file.write("" + user)
+            file.write("" + username)
 
         file.close()
 
-    # Used to access user data
-    personal_token = util.prompt_for_user_token(user,
-                                                scope,
-                                                client_id,
-                                                client_secret,
-                                                redirect)
+    if spotify_personal is None:
+        personal_token = util.prompt_for_user_token(user,
+                                                    scope,
+                                                    client_id,
+                                                    client_secret,
+                                                    redirect)
 
-    # API Wrapper objects to use functions to interact with Spotify API
-    spotify_personal = spotipy.Spotify(personal_token)
+        # API Wrapper objects to use functions to interact with Spotify API
+        spotify_personal = spotipy.Spotify(personal_token)
 
-    # Username of person logged in
-    username = spotify_personal.current_user()["id"]
+        # Username of person logged in
+        username = spotify_personal.current_user()["id"]
 
     exit_var = False
 
