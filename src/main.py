@@ -144,7 +144,7 @@ def classify_song(spotify_personal, song_url):
     print(classifier.predict(song_splice))
 
     # Prints the probabilities of all the prediction
-    print(prediction)
+    print_song(track, prediction)
 
 
 # Classifies all the songs in a playlist
@@ -217,7 +217,26 @@ def classify_playlist_songs(spotify_personal, username, playlist_url):
     # print(classifier.predict(song_splice))
 
     # Prints prediction
-    print(prediction)
+    for j in range(0, num_offsets):
+        playlists = spotify_personal.user_playlist_tracks(username,
+                                                          playlist[0],
+                                                          offset=(j * 100))
+
+        print_playlist(playlists, prediction)
+
+
+def print_playlist(playlist, predictions):
+
+    for k in range(len(playlist['items'])):
+        song = playlist['items'][k]
+
+        print("%20.20s : Rap - %.3f, Pop - %.3f, Country - %.3f, Metal - %.3f" %
+              (song['track']['name'], predictions[k][0], predictions[k][1], predictions[k][2], predictions[k][3]))
+
+
+def print_song(track, prediction):
+    print("%20.20s : Rap - %.3f, Pop - %.3f, Country - %.3f, Metal - %.3f" %
+          (track['name'], prediction[0][0], prediction[0][1], prediction[0][2], prediction[0][3]))
 
 
 def main():
